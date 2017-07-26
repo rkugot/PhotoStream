@@ -1,11 +1,4 @@
 .text-center
   = image_tag @post.image.url(:small)
 
-.form-wrapper
-  = simple_form_for @post, html: { class: 'form-horizontal', multipart: true } do |f|
-    .form-group
-      = f.input :image
-    .form-group
-      = f.input :caption
-    .form-group
-      = f.button :submit, class: "btn-primary" 
+= render 'form'
