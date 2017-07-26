@@ -1,5 +1,11 @@
-%h1 PhotoStream
--@posts.each do |post|
-  = post.caption
-  = image_tag post.image.url(:medium)
+.posts-wrapper.row
+  -@posts.each do |post|
+    .post
+      .post-head
+        .name
+          Roman Kugot
+      .image.center-block
+        = link_to (image_tag post.image.url(:medium)), post_path(post)
+      %p.caption
+        =post.caption
 	
