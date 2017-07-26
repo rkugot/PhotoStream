@@ -1,1 +1,5 @@
 %h1 PhotoStream
+-@posts.each do |post|
+  = post.caption
+  = image_tag post.image.url(:medium)
+	
