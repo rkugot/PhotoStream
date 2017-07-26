@@ -11,3 +11,5 @@
       =link_to 'Cancel', root_path
       |  
       =link_to 'Edit', edit_post_path(@post.id)
+      |
+      =link_to 'Delete', post_path(@post.id), method: :delete, data: { confirm: "Are you sure?" }
