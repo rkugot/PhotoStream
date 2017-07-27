@@ -3,7 +3,7 @@
     .post
       .post-head
         .name
-          Roman Kugot
+          = post.user.username
       .image.center-block
         = link_to (image_tag post.image.url(:medium)), post_path(post)
       %p.caption

@@ -2,14 +2,15 @@
   .post
     .post-head
       .name
-        Roman Kugot
+        = @post.user.username
     .image.center-block
       =image_tag @post.image.url(:medium)
     %p.caption
       =@post.caption
-    .text-center
+    .text-center.edit-links
       =link_to 'Cancel', root_path
-      |  
-      =link_to 'Edit', edit_post_path(@post.id)
-      |
-      =link_to 'Delete', post_path(@post.id), method: :delete
+      - if @post.user_id == current_user.id
+        |  
+        =link_to 'Edit', edit_post_path(@post.id)
+        |
+        =link_to 'Delete', post_path(@post.id), method: :delete
