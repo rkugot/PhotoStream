@@ -1,9 +1,17 @@
 require 'rails_helper.rb'
 
 feature 'Creating post' do
-  scenario 'can create post' do
+  background do
     visit '/'
+    click_link 'Register'
+    fill_in 'Email', with: 'stream@example.com'
+    fill_in 'Username', with: 'stream'
+    fill_in 'Password', with: 'qwerty', match: :first
+    fill_in 'Password confirmation', with: 'qwerty'
+    click_button 'Sign up'
     click_link 'New Post'
+  end
+  scenario 'can create post' do
     attach_file('Image', 'spec/files/images/coffee.jpg')
     fill_in 'Caption', with: 'nom nom nom #coffeetime'
     click_button 'Create Post'
@@ -12,8 +20,6 @@ feature 'Creating post' do
   end
 
   scenario 'nees an image to create post' do
-    visit '/'
-    click_link 'New Post'
     fill_in 'Caption', with: 'nom nom nom #coffeetime'
     click_button 'Create Post'
     expect(page).to have_content 'Something wrong! Please check the form!'
